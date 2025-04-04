@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -49,17 +48,6 @@ class MainActivity : AppCompatActivity() {
         locationFinder()
         requestPermission()
         setupLoadingBar()
-
-        binding.reloadBtn.setOnClickListener {
-            locationFinder()
-            binding.loading.visibility = VISIBLE
-        }
-        binding.getLocation.setOnClickListener {
-
-        }
-        binding.gotoSetting.setOnClickListener {
-
-        }
     }
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -121,12 +109,17 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateUI(getData: ApiResponse) {
-        binding.cityName.text = getData.name.toString()
-        binding.temperature.text =  kelvinToCelsius(getData.main.temp).toString()
-        binding.maxTemp.text = kelvinToCelsius(getData.main.temp_max).toString()
-        binding.minTemp.text = kelvinToCelsius(getData.main.temp_min).toString()
-        binding.weatherDiscript.text = getData.weather[0].description.toString()
-        binding.realFeelValue.text = kelvinToCelsius(getData.main.feels_like).toString()
+        binding.mainTemp.text =  kelvinToCelsius(getData.main.temp).toString()
+        binding.maxandminTemp.text = kelvinToCelsius(getData.main.temp_max).toString()+"°C"+" | "+
+                kelvinToCelsius(getData.main.temp_min).toString()+"°C"
+        binding.skydispcrit.text = getData.weather[0].description.toString()
+        binding.feelsLike.text = kelvinToCelsius(getData.main.feels_like).toString()
+        binding.cloudsValue.text = getData.clouds.all.toString()
+        binding.humidityValue.text = getData.main.humidity.toString()
+        binding.windspeed.text = getData.wind.speed.toString()
+        binding.visibilityValue.text = getData.visibility.toString()
+        binding.sunriseValue.text = getData.sys.sunrise.toString()
+        binding.sunsetValue.text = getData.sys.sunset.toString()
     }
 
     private fun kelvinToCelsius(kelvin: Double): Int {

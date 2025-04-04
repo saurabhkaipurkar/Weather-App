@@ -6,7 +6,10 @@ data class ApiResponse(
     val main: Main,
     val wind: Wind,
     val name: String,
-    val sys: sys
+    val sys: sys,
+    val clouds: Clouds,
+    val visibility: Int,
+    val timezone: Int
 )
 
 data class Coord (
@@ -27,6 +30,7 @@ data class Main(
     val temp_min: Double,
     val temp_max: Double,
     val humidity: Double,
+    val pressure: Double
 )
 
 data class Wind(
@@ -36,5 +40,11 @@ data class Wind(
 )
 
 data class sys(
-    val country: String
+    val country: String,
+    val sunrise: Int,
+    val sunset: Int
+)
+
+data class Clouds(
+    val all: Int
 )

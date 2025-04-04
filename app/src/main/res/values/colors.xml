@@ -5,4 +5,7 @@
     <color name="red">#FF0000</color>
     <color name="grey">#E7E7E7</color>
     <color name="dark_grey">#616161</color>
+    <color name="bg_blue">#00A6FF</color>
+    <color name="edittext_bg">#898989</color>
+    <color name="transparent">#00000000</color>
 </resources>
