@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.models
 
 data class ApiResponse(
     val coord: Coord,
@@ -9,7 +9,7 @@ data class ApiResponse(
     val sys: sys,
     val clouds: Clouds,
     val visibility: Int,
-    val timezone: Int
+    val timezone: Long
 )
 
 data class Coord (
@@ -41,8 +41,8 @@ data class Wind(
 
 data class sys(
     val country: String,
-    val sunrise: Int,
-    val sunset: Int
+    val sunrise: Long,
+    val sunset: Long
 )
 
 data class Clouds(

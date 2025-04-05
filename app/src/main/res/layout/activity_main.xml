@@ -8,17 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@color/bg_blue"
-    android:padding="12dp">
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/cityName"
+    <AutoCompleteTextView
+        android:id="@+id/searchCity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:autofillHints="name"
         android:background="@drawable/edittext_layout"
         android:drawableStart="@drawable/app_location_icon"
         android:drawablePadding="16dp"
-        android:hint="Enter City"
+        android:hint="@string/enter_city"
         android:inputType="text"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
@@ -29,14 +29,14 @@
 
     <ImageView
         android:id="@+id/search_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="TODO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:contentDescription="@string/search"
         android:src="@drawable/search_icon"
-        app:layout_constraintEnd_toEndOf="@+id/cityName"
+        app:layout_constraintEnd_toEndOf="@+id/searchCity"
         app:layout_constraintHorizontal_bias="0.99"
-        app:layout_constraintStart_toStartOf="@+id/cityName"
+        app:layout_constraintStart_toStartOf="@+id/searchCity"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -46,9 +46,7 @@
         android:layout_marginTop="16dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:background="@drawable/transparent_bg"
-        app:layout_constraintTop_toBottomOf="@+id/cityName"
-        tools:layout_editor_absoluteX="12dp">
+        app:layout_constraintTop_toBottomOf="@+id/searchCity">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -61,8 +59,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="NOW"
+                android:hint="@string/now"
                 android:textAlignment="center"
+                android:textColorHint="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:hint="@string/city_name"
+                android:gravity="start"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -71,9 +82,9 @@
                 android:id="@+id/mainTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="0°C"
+                android:hint="@string/_0_c"
                 android:textAlignment="center"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/black"
                 android:textSize="70sp"
                 android:textStyle="bold" />
 
@@ -81,28 +92,27 @@
                 android:id="@+id/maxandminTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="---------"
-                android:textSize="30sp"
-                android:textColor="@color/dark_grey"
+                android:hint="@string/temp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center|end"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/skydispcrit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="---------"
+                android:hint="@string/weather"
                 android:layout_gravity="end"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -110,72 +120,69 @@
                 android:id="@+id/feelsLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="---------"
+                android:hint="@string/feel_like"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
                 android:textSize="24sp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/weatherdiscript"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/dark_grey"
-        android:text="More Weather Details"/>
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/weatherdiscript"
-        android:layout_marginTop="16dp"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/white">
+            android:textAlignment="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@color/grey"
                 android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/clouds_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/cloud"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/clouds_img" />
 
                     <TextView
                         android:id="@+id/clouds_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Clouds"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/clouds"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -183,28 +190,28 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/humidity_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/humidity"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/humidity_img" />
 
                     <TextView
                         android:id="@+id/humidity_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Humidity"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/humidity"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -212,37 +219,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@color/grey"
                 android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/wind_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/wind"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/wind_img" />
 
                     <TextView
                         android:id="@+id/windspeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Wind speed"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/wind_speed"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,64 +258,67 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/visibility_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/visibility"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/visibility_img" />
 
                     <TextView
                         android:id="@+id/visibility_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Visibility"
+                        android:gravity="center"
+                        android:hint="@string/visibility"
                         android:textAlignment="center"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@color/grey"
                 android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/sunrise_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/sunrise"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/sunrise_img" />
 
                     <TextView
                         android:id="@+id/sunriseValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Sunrise"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/sunrise"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -315,93 +326,96 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/sunset_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/sunset"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/sunset_img" />
 
                     <TextView
                         android:id="@+id/sunsetValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Sunset"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/sunset"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@color/grey"
                 android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/pressure_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/pressure"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/pressure_img" />
 
                     <TextView
                         android:id="@+id/pressure_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Pressure"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/pressure"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/timezone_img"
-                        android:paddingEnd="8dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/timezone"
                         android:paddingStart="3dp"
-                        android:layout_gravity="center"/>
+                        android:paddingEnd="8dp"
+                        android:src="@drawable/timezone_img" />
 
                     <TextView
                         android:id="@+id/timezone_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="timezone"
-                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:hint="@string/timezone"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -417,6 +431,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

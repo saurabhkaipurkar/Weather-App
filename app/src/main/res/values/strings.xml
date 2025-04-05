@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="cloud">cloud</string>
+    <string name="enter_city">Enter City</string>
+    <string name="search">Search</string>
+    <string name="now">NOW</string>
+    <string name="city_name">City name</string>
+    <string name="_0_c">0°C</string>
+    <string name="temp">---------</string>
+    <string name="weather">Weather</string>
+    <string name="feel_like">Feel like</string>
+    <string name="more_weather_details">More Weather Details</string>
+    <string name="clouds">Clouds</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="visibility">Visibility</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="pressure">Pressure</string>
+    <string name="timezone">TimeZone</string>
 </resources>
